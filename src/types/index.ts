@@ -13,10 +13,13 @@ export interface ExperienceEntry {
   readonly id: string;
   readonly role: string;
   readonly company: string;
+  readonly companyContext: string;
+  readonly tagline: string;
   readonly type?: "full-time" | "contract" | "co-founder";
   readonly startDate: string;
   readonly endDate: string;
   readonly highlights: readonly string[];
+  readonly metrics?: readonly string[];
   readonly techStack: readonly string[];
 }
 

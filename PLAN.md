@@ -27,11 +27,11 @@
 - [x] Add scroll-to-top on route change hook
 - [ ] Verify layout renders and routing works in browser
 
-## Phase 3: Data Layer
-- [ ] Create `data/personal.ts` — name, title, links, summary
-- [ ] Create `data/experience.ts` — all work history entries
-- [ ] Create `data/projects.ts` — project cards with descriptions
-- [ ] Create `data/skills.ts` — tech stack grouped by category
+## Phase 3: Data Layer ✅
+- [x] Create `data/personal.ts` — name, title, links, summary
+- [x] Create `data/experience.ts` — all work history entries (7 roles)
+- [x] Create `data/projects.ts` — project cards with descriptions (6 projects)
+- [x] Create `data/skills.ts` — tech stack grouped by category (7 categories)
 
 ## Phase 4: Pages — Build & Style
 - [ ] **Home page** — hero section, animated intro, CTA buttons
