@@ -55,13 +55,14 @@
 - [x] Reusable FadeIn component for scroll-triggered animations
 
 ## Phase 6: Infrastructure & Deployment
-- [ ] Terraform: S3 bucket for static hosting
-- [ ] Terraform: CloudFront distribution (HTTPS, caching)
-- [ ] Terraform: Route53 DNS (if custom domain)
-- [ ] Terraform: ACM certificate (if custom domain)
-- [ ] Terraform: outputs (CloudFront URL, bucket name)
-- [ ] GitHub Actions: CI pipeline (lint, type-check, build)
-- [ ] GitHub Actions: CD pipeline (deploy to S3 + invalidate CloudFront)
+- [x] Terraform: S3 bucket for static hosting (OAC, no public access)
+- [x] Terraform: CloudFront distribution (HTTPS, caching, SPA error handling)
+- [ ] Terraform: Route53 DNS (when custom domain ready)
+- [ ] Terraform: ACM certificate (when custom domain ready)
+- [x] Terraform: outputs (CloudFront URL, bucket name, distribution ID)
+- [x] GitHub Actions: CI pipeline (lint, type-check, build, artifact upload)
+- [x] GitHub Actions: CD pipeline (deploy to S3 + invalidate CloudFront on CI success)
+- [ ] Configure AWS secrets in GitHub repo settings
 - [ ] First deploy and verify live site
 
 ## Phase 7: Content & Final Review
