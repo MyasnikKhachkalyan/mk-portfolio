@@ -31,8 +31,10 @@ function SkillGroup({ category, index }: SkillGroupProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
+      whileHover={{ y: -4 }}
       className="rounded-xl border border-border bg-bg-card p-6 transition-colors hover:border-accent/40"
     >
       <div className="mb-4 flex items-center gap-3">

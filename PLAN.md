@@ -34,22 +34,25 @@
 - [x] Create `data/skills.ts` — tech stack grouped by category (7 categories)
 
 ## Phase 4: Pages — Build & Style
-- [ ] **Home page** — hero section, animated intro, CTA buttons
-- [ ] **Experience page** — interactive timeline with expandable entries
-- [ ] **Projects page** — card grid with hover effects (placeholder images for now)
-- [ ] **Skills page** — categorized tech grid with visual indicators
-- [ ] **About page** — personal story, Kiraki founding, mentoring
-- [ ] **Contact page** — form (Formspree/EmailJS) + direct links
+- [x] **Home page** — hero section, animated intro, CTA buttons, radial glow
+- [x] **Experience page** — interactive timeline with expandable entries, metrics cards
+- [x] **Projects page** — card grid with hover effects (placeholder images for now)
+- [x] **Skills page** — categorized tech grid with icons and hover states
+- [x] **About page** — personal story, Kiraki founding, mentoring, education card
+- [x] **Contact page** — form (TODO: integrate Formspree/EmailJS) + direct links
 - [ ] Browser test all pages on desktop
 - [ ] Browser test all pages on mobile (responsive)
 
 ## Phase 5: Polish & Animations
-- [ ] Page transition animations (Framer Motion)
-- [ ] Scroll-triggered entrance animations on sections
-- [ ] Hover effects on cards, buttons, links
+- [x] Page transition animations (AnimatePresence with fade in Layout)
+- [x] Scroll-triggered entrance animations (whileInView on all cards, timeline, sections)
+- [x] Hover effects (card lift on ProjectCard/SkillGroup, accent borders, tech badge highlights)
+- [x] Animated nav indicator (spring layoutId underline on active route)
+- [x] Mobile menu animation (AnimatePresence slide)
 - [ ] Loading state / skeleton (if needed)
-- [ ] Accessibility pass (alt text, aria labels, focus states, keyboard nav)
+- [x] Accessibility pass (focus-visible rings on all links/buttons, aria labels, keyboard nav)
 - [ ] Lighthouse audit (performance, a11y, SEO)
+- [x] Reusable FadeIn component for scroll-triggered animations
 
 ## Phase 6: Infrastructure & Deployment
 - [ ] Terraform: S3 bucket for static hosting

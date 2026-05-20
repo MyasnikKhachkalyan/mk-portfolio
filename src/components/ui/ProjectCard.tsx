@@ -10,9 +10,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="group rounded-xl border border-border bg-bg-card p-6 transition-all hover:border-accent/40 hover:bg-bg-card-hover"
+      whileHover={{ y: -4 }}
+      className="group rounded-xl border border-border bg-bg-card p-6 transition-colors hover:border-accent/40 hover:bg-bg-card-hover"
     >
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <h3 className="text-lg font-semibold text-text-primary">
