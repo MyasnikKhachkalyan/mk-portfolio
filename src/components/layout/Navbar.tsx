@@ -22,7 +22,7 @@ export function Navbar() {
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm transition-colors ${
+              className={`text-base transition-colors ${
                 pathname === link.path
                   ? "text-accent"
                   : "text-text-secondary hover:text-text-primary"
@@ -51,7 +51,7 @@ export function Navbar() {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`rounded-lg px-4 py-2 text-sm transition-colors ${
+                className={`rounded-lg px-4 py-2 text-base transition-colors ${
                   pathname === link.path
                     ? "bg-accent-glow text-accent"
                     : "text-text-secondary hover:bg-bg-card hover:text-text-primary"

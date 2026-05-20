@@ -26,6 +26,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
