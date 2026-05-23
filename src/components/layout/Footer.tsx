@@ -1,4 +1,5 @@
-import { FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaGithub, FaXTwitter } from "react-icons/fa6";
+import { PERSONAL } from "@/data/personal";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -7,12 +8,21 @@ export function Footer() {
     <footer className="border-t border-border bg-bg-primary">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 sm:flex-row sm:justify-between">
         <p className="font-mono text-base text-text-muted">
-          &copy; {currentYear} Myasnik Khachkalyan
+          &copy; {currentYear} {PERSONAL.name}
         </p>
 
         <div className="flex items-center gap-4">
           <a
-            href="https://www.linkedin.com/in/myasnik-khachkalyan-437331187"
+            href={PERSONAL.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-muted transition-colors hover:text-accent"
+            aria-label="GitHub"
+          >
+            <FaGithub size={20} />
+          </a>
+          <a
+            href={PERSONAL.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="text-text-muted transition-colors hover:text-accent"
@@ -21,7 +31,16 @@ export function Footer() {
             <FaLinkedin size={20} />
           </a>
           <a
-            href="mailto:khachkalyan.myasnik@gmail.com"
+            href={PERSONAL.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-muted transition-colors hover:text-accent"
+            aria-label="X"
+          >
+            <FaXTwitter size={20} />
+          </a>
+          <a
+            href={`mailto:${PERSONAL.email}`}
             className="text-text-muted transition-colors hover:text-accent"
             aria-label="Email"
           >

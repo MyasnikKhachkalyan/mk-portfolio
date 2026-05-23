@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGoogle } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaXTwitter, FaGoogle } from "react-icons/fa6";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PERSONAL } from "@/data/personal";
 
@@ -16,6 +17,18 @@ const CONTACT_LINKS = [
     label: "LinkedIn",
     value: "Myasnik Khachkalyan",
     href: PERSONAL.linkedin,
+  },
+  {
+    icon: <FaGithub />,
+    label: "GitHub",
+    value: "MyasnikKhachkalyan",
+    href: PERSONAL.github,
+  },
+  {
+    icon: <FaXTwitter />,
+    label: "X",
+    value: "@MyasnikK",
+    href: PERSONAL.twitter,
   },
   {
     icon: <FaPhone />,

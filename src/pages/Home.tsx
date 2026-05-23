@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaEnvelope, FaArrowRight } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaArrowRight, FaGithub, FaXTwitter } from "react-icons/fa6";
 import { PERSONAL } from "@/data/personal";
 
 const container = {
@@ -27,16 +27,9 @@ export function Home() {
         animate="show"
         className="relative z-10 text-center"
       >
-        <motion.p
-          variants={item}
-          className="font-mono text-sm tracking-widest text-accent"
-        >
-          &gt; hello_world
-        </motion.p>
-
         <motion.h1
           variants={item}
-          className="mt-4 text-5xl font-bold tracking-tight text-text-primary md:text-7xl"
+          className="text-5xl font-bold tracking-tight text-text-primary md:text-7xl"
         >
           {PERSONAL.name}
         </motion.h1>
@@ -79,6 +72,15 @@ export function Home() {
           className="mt-8 flex items-center justify-center gap-6"
         >
           <a
+            href={PERSONAL.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-muted transition-colors hover:text-accent"
+            aria-label="GitHub"
+          >
+            <FaGithub size={22} />
+          </a>
+          <a
             href={PERSONAL.linkedin}
             target="_blank"
             rel="noopener noreferrer"
@@ -86,6 +88,15 @@ export function Home() {
             aria-label="LinkedIn"
           >
             <FaLinkedin size={22} />
+          </a>
+          <a
+            href={PERSONAL.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-muted transition-colors hover:text-accent"
+            aria-label="X"
+          >
+            <FaXTwitter size={22} />
           </a>
           <a
             href={`mailto:${PERSONAL.email}`}

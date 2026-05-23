@@ -5,7 +5,8 @@ export interface PersonalInfo {
   readonly email: string;
   readonly phone: readonly string[];
   readonly linkedin: string;
-  readonly github?: string;
+  readonly github: string;
+  readonly twitter: string;
   readonly summary: string;
 }
 
