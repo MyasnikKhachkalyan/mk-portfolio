@@ -45,9 +45,3 @@ export interface NavLink {
   readonly label: string;
   readonly path: string;
 }
-
-export interface ContactFormData {
-  readonly name: string;
-  readonly email: string;
-  readonly message: string;
-}

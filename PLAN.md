@@ -33,13 +33,13 @@
 - [x] Create `data/projects.ts` — project cards with descriptions (6 projects)
 - [x] Create `data/skills.ts` — tech stack grouped by category (7 categories)
 
-## Phase 4: Pages — Build & Style
+## Phase 4: Pages — Build & Style ✅
 - [x] **Home page** — hero section, animated intro, CTA buttons, radial glow
 - [x] **Experience page** — interactive timeline with expandable entries, metrics cards
 - [x] **Projects page** — card grid with hover effects (placeholder images for now)
-- [x] **Skills page** — categorized tech grid with icons and hover states
+- [x] **Skills page** — redesigned with 12 categories, bigger cards, 4-col grid
 - [x] **About page** — personal story, Kiraki founding, mentoring, education card
-- [x] **Contact page** — form (TODO: integrate Formspree/EmailJS) + direct links
+- [x] **Contact page** — Formspree integration + direct links
 - [ ] Browser test all pages on desktop
 - [ ] Browser test all pages on mobile (responsive)
 
@@ -66,6 +66,10 @@
 - [ ] First deploy and verify live site
 
 ## Phase 7: Content & Final Review
+- [x] Formspree contact form integration (env var: `VITE_FORMSPREE_ID`)
+- [x] OG meta tags + Twitter card meta
+- [x] SVG favicon with "mk" branding
+- [x] `.env.example` for Formspree setup
 - [ ] Add real screenshots/diagrams for projects (where available)
 - [ ] Decide on placeholder strategy for older projects without screenshots
 - [ ] Final copy review across all pages
@@ -84,6 +88,8 @@
 | 2026-05-17 | Terraform + S3 + CloudFront | Full infra control, IaC best practice |
 | 2026-05-17 | No backend | Static portfolio, no dynamic content needed |
 | 2026-05-17 | Project screenshots TBD | Some older projects have no codebase access — will figure out presentation when we get there |
+| 2026-05-21 | Formspree for contact form | Simplest integration, free tier, no JS SDK needed |
+| 2026-05-21 | Skills expanded to 12 categories | Added state mgmt, testing, monitoring, tooling, gaming — deeper coverage |
 
 ---
 

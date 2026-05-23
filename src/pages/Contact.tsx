@@ -1,9 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGoogle } from "react-icons/fa";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PERSONAL } from "@/data/personal";
-import type { ContactFormData } from "@/types";
 
 const CONTACT_LINKS = [
   {
@@ -31,25 +30,43 @@ const CONTACT_LINKS = [
   },
 ] as const;
 
+interface ContactForm {
+  readonly name: string;
+  readonly email: string;
+  readonly subject: string;
+  readonly message: string;
+}
+
 export function Contact() {
-  const [form, setForm] = useState<ContactFormData>({
+  const [form, setForm] = useState<ContactForm>({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle",
-  );
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function buildEmailParts() {
+    const subject = form.subject || `Portfolio contact from ${form.name}`;
+    const body = `Hi Myasnik,\n\n${form.message}\n\n— ${form.name}\n${form.email}`;
+    return { subject, body };
+  }
+
+  function openGmail(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending");
+    const { subject, body } = buildEmailParts();
+    const to = encodeURIComponent(PERSONAL.email);
+    const su = encodeURIComponent(subject);
+    const b = encodeURIComponent(body);
+    const authuser = form.email ? `&authuser=${encodeURIComponent(form.email)}` : "";
+    window.open(
+      `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${b}${authuser}`,
+      "_blank",
+    );
+  }
 
-    // TODO: integrate Formspree or EmailJS
-    setTimeout(() => {
-      setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
-    }, 1000);
+  function openMailto() {
+    const { subject, body } = buildEmailParts();
+    window.location.href = `mailto:${PERSONAL.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   return (
@@ -98,7 +115,7 @@ export function Contact() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4 }}
-          onSubmit={handleSubmit}
+          onSubmit={openGmail}
           className="space-y-4"
         >
           <div>
@@ -124,7 +141,7 @@ export function Contact() {
               htmlFor="email"
               className="mb-1 block font-mono text-sm uppercase tracking-wider text-text-muted"
             >
-              Email
+              Your Email
             </label>
             <input
               id="email"
@@ -133,7 +150,24 @@ export function Contact() {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="w-full rounded-lg border border-border bg-bg-card px-4 py-3 text-base text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-accent"
-              placeholder="you@example.com"
+              placeholder="you@gmail.com"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="subject"
+              className="mb-1 block font-mono text-sm uppercase tracking-wider text-text-muted"
+            >
+              Subject
+            </label>
+            <input
+              id="subject"
+              type="text"
+              value={form.subject}
+              onChange={(e) => setForm({ ...form, subject: e.target.value })}
+              className="w-full rounded-lg border border-border bg-bg-card px-4 py-3 text-base text-text-primary outline-none transition-colors placeholder:text-text-muted focus:border-accent"
+              placeholder="Project inquiry, hello, etc."
             />
           </div>
 
@@ -155,16 +189,27 @@ export function Contact() {
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={status === "sending" || status === "sent"}
-            className="w-full rounded-lg border border-accent bg-accent/10 px-6 py-3 font-mono text-base text-accent transition-all hover:bg-accent/20 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {status === "idle" && "Send message"}
-            {status === "sending" && "Sending..."}
-            {status === "sent" && "Message sent!"}
-            {status === "error" && "Failed — try again"}
-          </button>
+          <div className="flex gap-3">
+            <button
+              type="submit"
+              className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-accent bg-accent/10 px-6 py-3 font-mono text-base text-accent transition-all hover:bg-accent/20"
+            >
+              <FaGoogle size={16} />
+              Open in Gmail
+            </button>
+            <button
+              type="button"
+              onClick={openMailto}
+              className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-border px-6 py-3 font-mono text-base text-text-secondary transition-all hover:border-accent hover:text-accent"
+            >
+              <FaEnvelope size={16} />
+              Email app
+            </button>
+          </div>
+
+          <p className="text-center text-sm text-text-muted">
+            Opens your email with the message pre-filled.
+          </p>
         </motion.form>
       </div>
     </section>
