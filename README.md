@@ -4,7 +4,7 @@ Personal portfolio website showcasing my work as a Senior Software Engineer with
 
 ## Live Site
 
-> Coming soon — deployment in progress.
+[https://myasnikk.com](https://myasnikk.com)
 
 ## What's Inside
 
@@ -17,6 +17,8 @@ Personal portfolio website showcasing my work as a Senior Software Engineer with
 ## Links
 
 - [LinkedIn](https://www.linkedin.com/in/myasnik-khachkalyan-437331187)
+- [GitHub](https://github.com/MyasnikKhachkalyan)
+- [X](https://x.com/MyasnikK)
 - [Email](mailto:khachkalyan.myasnik@gmail.com)
 
 ## Tech Details
