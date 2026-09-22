@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.5"
+  required_version = ">= 1.10"
 
   required_providers {
     aws = {
@@ -11,13 +11,14 @@ terraform {
   # The bucket is versioned, so a bad apply can be rolled back to an earlier
   # state file. It is created outside terraform on purpose: managing it here
   # would put the state describing the bucket inside the bucket itself.
-  # No locking, because S3 native locking needs terraform 1.10 and this is 1.8.
   backend "s3" {
     bucket  = "myasnikk-portfolio-tfstate"
     key     = "portfolio/terraform.tfstate"
     region  = "eu-west-2"
     profile = "mk-portfolio"
     encrypt = true
+    # S3-native locking, so no DynamoDB table to maintain. Needs terraform 1.10.
+    use_lockfile = true
   }
 }
 
