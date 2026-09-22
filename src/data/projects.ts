@@ -7,14 +7,14 @@ export const PROJECTS: readonly Project[] = [
     company: "Spyscape",
     role: "Senior Software Engineer",
     description:
-      "Distributed AWS-based platform powering real-time interactions across physical game rooms, connected hardware, and backend services. Event-driven MQTT infrastructure handling low-latency communication across 24 game rooms and 8 interactive museum stations per venue, serving 200+ concurrent users with sub-50ms hardware response times.",
+      "Distributed AWS-based platform powering real-time interactions across physical game rooms, connected hardware, and backend services. Event-driven services over MQTT carry low-latency communication across 24 game rooms and the museum stations of two venues, serving roughly 2,500 players a week with sub-50ms hardware response times.",
     highlights: [
       "Scaled from single NYC venue to multi-site (NYC + London)",
       "Sub-50ms latency on all real-time hardware interactions",
       "200+ concurrent users per venue, infrastructure built for 3x capacity",
-      "24 game rooms + 8 museum stations per venue",
-      "AI-integrated workflows with voice-to-text and handwriting recognition",
-      "Unity gameplay synchronized with backend services",
+      "24 game rooms across two venues, plus interactive museum stations",
+      "Venue lifecycle system driving doors, lighting and check-in, wired into the building fire alarm",
+      "Every game in both venues, in TypeScript and C#/Unity, four of them delivered AI-first",
     ],
     techStack: [
       "TypeScript",
@@ -33,11 +33,11 @@ export const PROJECTS: readonly Project[] = [
     company: "Equipool",
     role: "Lead Frontend Engineer",
     description:
-      "Fintech platform connecting borrowers with investors for equipment financing. Joined 3 weeks before a critical deadline, re-architected 4 major flows, reduced bundle size by 20%, and delivered production-ready results in 2 weeks — a week ahead of schedule.",
+      "Fintech platform connecting borrowers with investors for equipment financing. Joined 3 weeks before a critical deadline, re-architected 4 major flows, reduced bundle size by 25%, and delivered production-ready results in 2 weeks — a week ahead of schedule.",
     highlights: [
       "Delivered production-ready 1 week ahead of a 3-week deadline",
       "Re-architected 4 major borrower and investor flows",
-      "20% bundle size reduction from unoptimized baseline",
+      "25% bundle size reduction from unoptimized baseline",
       "Centralized state management with reusable API/query wrappers",
       "Led team of 2 frontend engineers + 1 senior infra engineer",
     ],
@@ -102,10 +102,10 @@ export const PROJECTS: readonly Project[] = [
     company: "Kiraki Dev",
     role: "Co-Founder & Mentor",
     description:
-      "Software development agency and engineering training company. Delivered 6 client projects across analytics, e-commerce, fintech, and productivity. Mentored 4 junior engineers — all hired into development roles — and supported a new technical project manager.",
+      "Software development agency and engineering training company. Delivered 5 client products across analytics, e-commerce, fintech, and productivity. Trained 8 interns and junior engineers, 4 of whom were hired into full-time engineering roles, and supported a new technical project manager.",
     highlights: [
-      "6 client projects delivered across different industries",
-      "4 junior engineers mentored — all hired into dev roles",
+      "5 client products delivered across different industries",
+      "8 interns and junior engineers trained, 4 hired full-time",
       "Established engineering standards across all projects",
       "Built structured training curriculum for React, TypeScript, Node.js",
     ],

@@ -10,5 +10,5 @@ export const PERSONAL: PersonalInfo = {
   github: "https://github.com/MyasnikKhachkalyan",
   twitter: "https://x.com/MyasnikK",
   summary:
-    "Senior Software Engineer with 8+ years of experience building scalable software platforms, distributed systems, and real-time applications. Strong expertise in TypeScript, Node.js, React, PostgreSQL, and AWS, with a track record of delivering production systems, improving system reliability and performance, and shaping technical direction.",
+    "Senior Software Engineer with 8+ years building distributed, real-time systems end to end, from web front ends to AWS infrastructure. For the past three years a core engineer on Spyscape's venue platform, where I designed and own several production subsystems across cloud services, connected-device fleets and in-venue software. Strong in TypeScript, Node.js, React and PostgreSQL. I work AI-first, shipping production software with coding agents while owning design, testing and quality.",
 } as const;

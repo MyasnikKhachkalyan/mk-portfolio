@@ -15,7 +15,7 @@ const sections = [
   {
     title: "Kiraki — Building a Company",
     content:
-      "In 2020, I co-founded Kiraki Dev, a software development agency and training company. We delivered 6 client projects across analytics, e-commerce, fintech, and productivity, while running Kiraki Classes — an engineering training program where I mentored 4 junior developers who all went on to be hired as engineers. Building Kiraki taught me as much about leadership, technical decision-making, and managing delivery under pressure as any engineering role.",
+      "In 2020, I co-founded Kiraki Dev, a software development agency and training company. We delivered 5 client products across analytics, e-commerce, fintech, and productivity, while running Kiraki Classes, an engineering training program where I trained 8 interns and junior engineers, 4 of whom were hired into full-time engineering roles. Building Kiraki taught me as much about leadership, technical decision-making, and managing delivery under pressure as any engineering role.",
   },
   {
     title: "How I Work",
