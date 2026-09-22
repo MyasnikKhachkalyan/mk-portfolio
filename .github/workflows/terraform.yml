@@ -1,0 +1,36 @@
+name: Terraform
+
+# Only on terraform changes: the site build says nothing about the
+# infrastructure, and this says nothing about the site.
+on:
+  push:
+    branches: [main]
+    paths: ["terraform/**"]
+  pull_request:
+    branches: [main]
+    paths: ["terraform/**"]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: terraform
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.8.4
+
+      - run: terraform fmt -check -recursive
+
+      # -backend=false keeps this credential-free: it installs the providers
+      # validate needs without touching the state bucket. A real plan would
+      # need a role with read access to every managed resource, which the
+      # deploy role deliberately does not have.
+      - run: terraform init -backend=false
+
+      - run: terraform validate
