@@ -17,3 +17,8 @@ output "site_url" {
   description = "Your live site URL"
   value       = "https://${var.domain_name}"
 }
+
+output "github_deploy_role_arn" {
+  description = "Set as the AWS_ROLE_ARN secret on the GitHub repository"
+  value       = aws_iam_role.github_deploy.arn
+}

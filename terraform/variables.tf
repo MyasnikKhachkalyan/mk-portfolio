@@ -21,3 +21,9 @@ variable "domain_name" {
   type        = string
   default     = "myasnikk.com"
 }
+
+variable "github_repository" {
+  description = "owner/repo allowed to assume the deploy role"
+  type        = string
+  default     = "MyasnikKhachkalyan/mk-portfolio"
+}

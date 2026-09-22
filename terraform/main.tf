@@ -29,10 +29,10 @@ data "aws_route53_zone" "site" {
 # --- ACM Certificate (must be in us-east-1 for CloudFront) ---
 
 resource "aws_acm_certificate" "site" {
-  provider          = aws.us_east_1
-  domain_name       = var.domain_name
+  provider                  = aws.us_east_1
+  domain_name               = var.domain_name
   subject_alternative_names = ["www.${var.domain_name}"]
-  validation_method = "DNS"
+  validation_method         = "DNS"
 
   lifecycle {
     create_before_destroy = true
@@ -195,8 +195,8 @@ resource "aws_s3_bucket_policy" "site" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "AllowCloudFrontOAC"
-        Effect    = "Allow"
+        Sid    = "AllowCloudFrontOAC"
+        Effect = "Allow"
         Principal = {
           Service = "cloudfront.amazonaws.com"
         }
@@ -207,6 +207,69 @@ resource "aws_s3_bucket_policy" "site" {
             "AWS:SourceArn" = aws_cloudfront_distribution.site.arn
           }
         }
+      }
+    ]
+  })
+}
+
+# --- GitHub Actions deploy role (OIDC) ---
+# The provider is account-wide and created by hand, so it is referenced rather
+# than managed here: a second project declaring it would fail on apply.
+
+data "aws_iam_openid_connect_provider" "github" {
+  url = "https://token.actions.githubusercontent.com"
+}
+
+resource "aws_iam_role" "github_deploy" {
+  name        = "${var.project_name}-github-deploy"
+  description = "Assumed by GitHub Actions to publish the site"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Principal = {
+          Federated = data.aws_iam_openid_connect_provider.github.arn
+        }
+        Condition = {
+          StringEquals = {
+            "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
+            # Without this the role is assumable from any repository on GitHub.
+            "token.actions.githubusercontent.com:sub" = "repo:${var.github_repository}:ref:refs/heads/main"
+          }
+        }
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy" "github_deploy" {
+  name = "site-deploy"
+  role = aws_iam_role.github_deploy.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid      = "ListBucketForSync"
+        Effect   = "Allow"
+        Action   = "s3:ListBucket"
+        Resource = aws_s3_bucket.site.arn
+      },
+      {
+        Sid    = "WriteObjects"
+        Effect = "Allow"
+        # DeleteObject is needed because the workflow syncs with --delete.
+        Action   = ["s3:PutObject", "s3:DeleteObject"]
+        Resource = "${aws_s3_bucket.site.arn}/*"
+      },
+      {
+        Sid      = "InvalidateCache"
+        Effect   = "Allow"
+        Action   = "cloudfront:CreateInvalidation"
+        Resource = aws_cloudfront_distribution.site.arn
       }
     ]
   })
